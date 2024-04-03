@@ -19,10 +19,6 @@ find_package(catkin REQUIRED COMPONENTS
   dynamic_reconfigure
 )
 
-generate_dynamic_reconfigure_options(
-  cfg/GazeboTrafficLight.cfg
-)
-
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES  gazebo_ros_ackerman
@@ -47,17 +43,6 @@ target_link_libraries(MyFlashLightPlugin ${GAZEBO_LIBRARIES} ${catkin_LIBRARIES}
 add_library(gazebo_ros_ackerman src/gazebo_ros_ackerman_drive.cpp)
 target_link_libraries(gazebo_ros_ackerman ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
-add_library(GazeboTrafficLight
-  src/GazeboTrafficLight.cpp
-)
-add_dependencies(GazeboTrafficLight
-GazeboTrafficLight_gencfg
-)
-target_link_libraries(GazeboTrafficLight
-  ${catkin_LIBRARIES}
-  ${GAZEBO_LIBRARIES}
-)
-
 install(TARGETS MyFlashLightPlugin DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})
 install(TARGETS gazebo_ros_ackerman 
 ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
@@ -66,12 +51,6 @@ RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
 )
 
 install(FILES stoplight.sdf DESTINATION ${CMAKE_INSTALL_PREFIX}/share/gazebo/models/stoplight/)
-
-install(
-  TARGETS
-   GazeboTrafficLight
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-)
 
 install(
   DIRECTORY
