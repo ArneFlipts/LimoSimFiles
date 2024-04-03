@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<sdf>
+    <world name="default">
+        <!-- Ground Plane-->
+        <include>
+            <uri>model://ground_plane</uri>
+        </include>
+
+        <!-- Source Light-->
+        <include>
+            <uri>model://sun</uri>
+        </include>
+
+        <!-- Custom Model-->
+        <include>
+            <uri>model://SimTable</uri>
+        </include>
+    </world>
+</sdf>
